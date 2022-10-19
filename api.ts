@@ -1,10 +1,21 @@
 
-
+interface Stats{
+    base_stat:number;
+    effort:number;
+    stat:{
+        name:string;
+        url:string;
+    }
+}
 export interface Pokemon {
+    id:number;
     name:string;
     types:any[];
     image:string;
     color:string;
+    abilities:[];
+    moves:any;
+    stats:Stats[];
 }
 
 interface APIResponse {
@@ -46,10 +57,32 @@ const getPokemonData = async (url:string) => {
             .then((res) => res.json())
                 .then( (data) => {
 
+                    const getBackgroundColor = (type:string) => {
+                        if(!type){
+                            return "white"
+                        }
+                        switch(type){
+                            case "grass" : return "#6ED0AF";
+                            case "fire" : return "#E8686D";
+                            case "water" : return "blue"
+                            default : return "purple"
+                        }
+                    }
+
                     const obj =  {
+                        id:url.split("/")[6],
                         name:data.species.name,
                         types:data.types,
-                        image:data.sprites.front_default,
+                        image:[
+                            data.sprites.front_default,
+                            data.sprites.front_shiny,
+                            data.sprites.back_default,
+                            data.sprites.back_shiny,
+                        ],
+                        color:getBackgroundColor(data.types[0].type.name),
+                        abilities:data.abilities,
+                        moves:data.moves,
+                        stats:data.stats
                     }
 
                     return obj
