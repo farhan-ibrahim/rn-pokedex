@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text as NativeText, TextProps} from 'react-native';
+import { Text as NativeText, TextProps , StyleSheet, Animated} from 'react-native';
 
 interface Props extends TextProps {
     bold?:boolean;
@@ -18,5 +18,8 @@ const Text = (props:Props) => {
         </NativeText>
     )
 }
+
+const styles = StyleSheet.create({
+})
 
 export default Text

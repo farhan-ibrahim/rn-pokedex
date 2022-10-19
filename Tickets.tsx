@@ -4,7 +4,7 @@ import React from 'react';
 import { 
   StyleSheet, 
   View , Pressable, SafeAreaView, FlatList } from 'react-native';
-import Text from "./Text";
+import Text from "./components/Text";
 import { PRIMARY } from './Colors';
 import { Feather } from '@expo/vector-icons';
 
