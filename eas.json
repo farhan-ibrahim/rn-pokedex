@@ -1,0 +1,29 @@
+{
+  "cli": {
+    "version": ">= 2.4.1"
+  },
+  "build": {
+    "development": {
+      "channel":"development",
+      "android": {
+        "buildType": "apk",
+        "distribution": "internal"
+      },
+      "ios": {
+        "distribution": "store",
+        "simulator": true
+      }
+    },
+    "preview": {
+      "channel":"preview",
+      "distribution": "internal"
+    },
+    "production": {
+      "channel":"production",
+      "distribution":"store"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

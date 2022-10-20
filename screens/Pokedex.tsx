@@ -34,30 +34,30 @@ const Pokedex = (props:Props) => {
   },[])
 
   const renderItem = ({item , index}:{item:Pokemon , index:number}) => (
-    <View style={{width:WIDTH, backgroundColor:"cyan", alignItems:"center",justifyContent:"center", padding:10, height:"80%"}}>
-      <Text bold color={"gray"} >{item.name.toUpperCase()}</Text>
-          <Animated.Image 
-            source={{uri:item.image[0]}}
-            style={{
-              width:200,
-              height:200,
+    // <View style={{width:WIDTH, backgroundColor:"cyan", alignItems:"center",justifyContent:"center", padding:10, height:"80%"}}>
+    //   <Text bold color={"gray"} >{item.name.toUpperCase()}</Text>
+    //       <Animated.Image 
+    //         source={{uri:item.image[0]}}
+    //         style={{
+    //           width:200,
+    //           height:200,
              
-            }}
+    //         }}
   
-          />
-          <View style={styles.typeContainer}>
-          {item.types.map((type , index) => (
-            <View style={styles.type} key={index.toString()}>
-              <Text color="white" >{type.type.name}</Text>
-            </View>
-          ))}
-          </View>
-    </View>
-    // <Tile 
-    //   item={item}
-    //   index={index}
-    //   navigation={props.navigation}
-    // />
+    //       />
+    //       <View style={styles.typeContainer}>
+    //       {item.types.map((type , index) => (
+    //         <View style={styles.type} key={index.toString()}>
+    //           <Text color="white" >{type.type.name}</Text>
+    //         </View>
+    //       ))}
+    //       </View>
+    // </View>
+    <Tile 
+      item={item}
+      index={index}
+      navigation={props.navigation}
+    />
   )
 
   const scrollX = useRef(new Animated.Value(0)).current;
@@ -67,9 +67,8 @@ const Pokedex = (props:Props) => {
       <SafeAreaView style={{flex:1}}>
       <View style={styles.container}>
       <Animated.FlatList 
-          horizontal
           data={state}
-          // numColumns={2}
+          numColumns={2}
           contentContainerStyle={styles.list}
           renderItem={renderItem}
           keyExtractor={(item) => item.id.toString()}
@@ -81,7 +80,7 @@ const Pokedex = (props:Props) => {
           }
         }])}
       />
-      <Animated.View style={{flexDirection:"row", alignItems:"center", backgroundColor:"cyan", justifyContent:"center", paddingVertical:20}}>
+      {/* <Animated.View style={{flexDirection:"row", alignItems:"center", backgroundColor:"cyan", justifyContent:"center", paddingVertical:20}}>
         {state.map((item, index) => {
           return(
             <Animated.View 
@@ -112,7 +111,7 @@ const Pokedex = (props:Props) => {
             />
           )
         })}
-      </Animated.View>
+      </Animated.View> */}
       
       </View>
       </SafeAreaView>
