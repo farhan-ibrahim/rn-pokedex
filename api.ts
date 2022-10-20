@@ -26,6 +26,19 @@ interface APIResponse {
 
 }
 
+
+export const getBackgroundColor = (type:string) => {
+    if(!type){
+        return "white"
+    }
+    switch(type){
+        case "grass" : return "#6ED0AF";
+        case "fire" : return "#E8686D";
+        case "water" : return "blue"
+        default : return "purple"
+    }
+}
+
 const getPokemonList = async () => {
     try{
         return fetch("https://pokeapi.co/api/v2/pokemon")
@@ -57,17 +70,6 @@ const getPokemonData = async (url:string) => {
             .then((res) => res.json())
                 .then( (data) => {
 
-                    const getBackgroundColor = (type:string) => {
-                        if(!type){
-                            return "white"
-                        }
-                        switch(type){
-                            case "grass" : return "#6ED0AF";
-                            case "fire" : return "#E8686D";
-                            case "water" : return "blue"
-                            default : return "purple"
-                        }
-                    }
 
                     const obj =  {
                         id:url.split("/")[6],
